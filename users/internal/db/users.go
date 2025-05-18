@@ -11,6 +11,7 @@ type UserSchema struct {
 	Id        int64     `json:"id" db:"id"`
 	Email     string    `json:"email" db:"email"`
 	Password  string    `json:"password" db:"password"`
+	Tier      string    `json:"tier" db:"tier"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
 }
