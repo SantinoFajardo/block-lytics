@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package balances;
+
+option go_package = "github.com/block-lytics/proto/balances;balancespb";
+
+service BalancesService {
+	rpc UpdateBalances(UpdateBalancesRequest) returns (UpdateBalancesResponse);
+}
+
+message UpdateBalancesRequest {
+    string account_address = 1;
+    string blockchain = 2;
+    string token_address = 3;
+    int64 amount = 4;
+}
+
+message UpdateBalancesResponse {
+    bool success = 1;
+}

@@ -22,6 +22,8 @@ func main() {
 
 	app.router.POST("/users", handlers.CreateUserHandler)
 
+	app.router.PUT("/balances", handlers.UpdateBalancesHandler)
+
 	port := os.Getenv("PORT")
 	if err := app.router.Run(":" + port); err != nil {
 		log.Fatal(err)

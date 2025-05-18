@@ -12,6 +12,12 @@ gen-proto:
 		--go_out=paths=source_relative:$(PROTO_DIR)/users/userspb \
 		--go-grpc_out=paths=source_relative:$(PROTO_DIR)/users/userspb \
 		$(PROTO_DIR)/users/users.proto
+
+	protoc \
+		--proto_path=$(PROTO_DIR) \
+		--go_out=paths=source_relative:$(PROTO_DIR)/balances/balancespb \
+		--go-grpc_out=paths=source_relative:$(PROTO_DIR)/balances/balancespb \
+		$(PROTO_DIR)/balances/balances.proto
 		
 build-accounts:
 	docker build -t block-lytics/accounts ./accounts
@@ -27,5 +33,8 @@ run-gateway:
 
 up:
 	docker-compose up --build
+
+generate-wait-for:
+	chmod +x wait-for.sh 
 
 PHONY: gen-proto

@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"context"
-	"log"
 	"net/http"
 
 	userspb "github.com/block-lytics/proto/users/userspb"
@@ -29,9 +28,8 @@ func CreateUserHandler(c *gin.Context) {
 	}
 	defer conn.Close()
 
-	log.Println("Connecting to users service at users:50052")
 	client := userspb.NewUsersServiceClient(conn)
-	log.Println("Connected to users service")
+	
 	response, err := client.CreateUser(context.Background(), &userspb.CreateUserRequest{
 		Email:    req.Email,
 		Password: req.Password,
