@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/block-lytics/proto/users;userspb";
+
+service UsersService {
+	rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+}
+
+message CreateUserRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message CreateUserResponse {
+    int64 id = 1;
+    string message = 2;
+}

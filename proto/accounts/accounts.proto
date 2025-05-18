@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package accounts;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/block-lytics/proto/accounts;accountspb";
+
+service AccountsService {
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
+  rpc GetAccountByAdress(GetAccountByAdressRequest) returns (GetAccountByAdressResponse);
+}
+
+message GetAccountByAdressRequest {
+  string address = 1;
+}
+
+message GetAccountByAdressResponse {
+  int64 id = 1;
+  string address = 2;
+  string blockchain = 3;
+  int64 user_id = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CreateAccountRequest {
+  string address = 1;
+  string blockchain = 2;
+  int64 user_id = 3;
+}
+
+message CreateAccountResponse {
+  int64 id = 1;           // UUID generado o identificador del registro
+  string message = 2;      // Confirmación u observación
+}
