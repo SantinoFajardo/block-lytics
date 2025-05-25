@@ -13,6 +13,7 @@ import (
 
 func main() {
 	dbConn := db.InitDB()
+	defer dbConn.Close()
 	userRepository := db.NewUserRepository(dbConn)
 	port := os.Getenv("PORT")
 	lis, err := net.Listen("tcp", ":"+port)
